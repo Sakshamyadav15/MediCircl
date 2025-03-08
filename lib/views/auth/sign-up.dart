@@ -47,7 +47,7 @@ class SignUpScreen extends StatelessWidget {
                 width: 200,
                 height: 200,
                 child: Image.asset(
-                  'assets/images/doctor_illustration.png',
+                  '../../../assets/images/doctor_illustration.png',
                   fit: BoxFit.contain,
                 ),
                 // If you don't have the image yet, you can use a placeholder:
