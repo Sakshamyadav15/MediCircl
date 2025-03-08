@@ -5,6 +5,8 @@ void main() {
 }
 
 class MediCircleApp extends StatelessWidget {
+  const MediCircleApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

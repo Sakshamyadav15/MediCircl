@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../views/auth/sign-up.dart';
-import '../views/auth/login.dart';
-import '../views/dashboard/dashboard.dart';
 
 class AppRoutes {
   static const String login = '/login';
