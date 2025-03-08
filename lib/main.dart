@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'routes/routes.dart';
+import './routes/routes.dart';
 import './views/auth/login.dart';
 
 void main() {
