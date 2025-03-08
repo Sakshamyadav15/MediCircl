@@ -239,7 +239,7 @@ class SignUpScreen extends StatelessWidget {
                                   children: [
                                     // Google logo
                                     Image.asset(
-                                      'assets/images/google_logo.png',
+                                      '../../../assets/images/google_logo.png',
                                       width: 20,
                                       height: 20,
                                     ),
@@ -358,7 +358,7 @@ class SignUpScreen extends StatelessWidget {
                 width: 34,
                 height: 32.21,
                 child: Image.asset(
-                  'assets/images/medicircle_logo.png',
+                  '../../../assets/images/medicircle_logo.png',
                   fit: BoxFit.contain,
                 ),
               ),
