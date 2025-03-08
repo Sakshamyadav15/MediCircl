@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 
-class MedicalAppHomeScreen extends StatelessWidget {
-  const MedicalAppHomeScreen({Key? key}) : super(key: key);
+class PharmacyPage extends StatefulWidget {
+  const PharmacyPage({super.key});
+
+  @override
+  State<PharmacyPage> createState() => _PharmacyScreenState();
+}
+
+class _PharmacyScreenState extends State<PharmacyPage> {
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
