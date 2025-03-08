@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,7 @@ class SignUpScreen extends StatelessWidget {
             Positioned(
               left: 0,
               top: 778,
-              child: Container(
+              child: SizedBox(
                 width: 375,
                 height: 34,
                 child: Row(
@@ -43,7 +45,7 @@ class SignUpScreen extends StatelessWidget {
             Positioned(
               left: 87.5, // Centered
               top: 150,
-              child: Container(
+              child: SizedBox(
                 width: 200,
                 height: 200,
                 child: Image.asset(
@@ -102,7 +104,7 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(height: 24),
                     
                     // Email input and continue button
-                    Container(
+                    SizedBox(
                       width: 327,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -174,7 +176,7 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(height: 24),
                     
                     // Divider with "or"
-                    Container(
+                    SizedBox(
                       width: 327,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -354,7 +356,7 @@ class SignUpScreen extends StatelessWidget {
             Positioned(
               left: 89,
               top: 50,
-              child: Container(
+              child: SizedBox(
                 width: 34,
                 height: 32.21,
                 child: Image.asset(
