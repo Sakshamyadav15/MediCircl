@@ -1,371 +1,270 @@
-// ignore: file_names
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import '../../routes/routes.dart';
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: 375,
-        height: 812,
-        clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(color: Colors.white),
-        child: Stack(
-          children: [
-            // Bottom home indicator bar
-            Positioned(
-              left: 0,
-              top: 778,
-              child: SizedBox(
-                width: 375,
-                height: 34,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                
+                // App logo and title
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 134,
-                      height: 5,
-                      decoration: ShapeDecoration(
-                        color: Colors.black,
+                    Image.asset(
+                      'assets/images/logo.png',
+                      width: 47,
+                      height: 48,
+                    ),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'MediCircle',
+                      style: TextStyle(
+                        color: Color(0xFF38A3A5),
+                        fontSize: 36,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.36,
+                      ),
+                    ),
+                  ],
+                ),
+                
+                // Main illustration
+                Container(
+                  height: 300,
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    'assets/images/medical_illustration.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                
+                const SizedBox(height: 20),
+                
+                // Create account section
+                Column(
+                  children: [
+                    const Text(
+                      'Create an account',
+                      style: TextStyle(
+                        color: Color(0xFF38A3A5),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Enter your email to sign up for this app',
+                      style: TextStyle(
+                        color: Color(0xFF57CC99),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    
+                    // Email input field
+                    TextField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        hintText: 'email@domain.com',
+                        hintStyle: const TextStyle(
+                          color: Color(0xFF828282),
+                          fontSize: 14,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFDFDFDF),
+                            width: 1,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFDFDFDF),
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    
+                    const SizedBox(height: 16),
+                    
+                    // Continue button
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add signup logic
+                        if (_emailController.text.isNotEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Signing up with: ${_emailController.text}'),
+                            ),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF57CC99),
+                        minimumSize: const Size(double.infinity, 48),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        'Continue',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            
-            // Doctor illustration
-            Positioned(
-              left: 87.5, // Centered
-              top: 150,
-              child: SizedBox(
-                width: 200,
-                height: 200,
-                child: Image.asset(
-                  '../../../assets/images/doctor_illustration.png',
-                  fit: BoxFit.contain,
-                ),
-                // If you don't have the image yet, you can use a placeholder:
-                // child: Icon(Icons.medical_services, size: 120, color: Color(0xFF38A3A5)),
-              ),
-            ),
-            
-            // Main form content
-            Positioned(
-              left: 4,
-              top: 450,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // Form title and description
-                    Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Create an account',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFF38A3A5),
-                              fontSize: 16,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w600,
-                              height: 1.50,
-                            ),
-                          ),
-                          SizedBox(height: 2),
-                          Text(
-                            'Enter your email to sign up for this app',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xFF57CC99),
-                              fontSize: 14,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400,
-                              height: 1.50,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 24),
                     
-                    // Email input and continue button
-                    SizedBox(
-                      width: 327,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 40,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(width: 1, color: Color(0xFFDFDFDF)),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 295,
-                                  child: Text(
-                                    'email@domain.com',
-                                    style: TextStyle(
-                                      color: Color(0xFF828282),
-                                      fontSize: 14,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.40,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 16),
-                          Container(
-                            width: double.infinity,
-                            height: 40,
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF57CC99),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Continue',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.40,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     
-                    // Divider with "or"
-                    SizedBox(
-                      width: 327,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              height: 1,
-                              decoration: BoxDecoration(color: Color(0xFFE6E6E6)),
-                            ),
+                    // Or divider
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: Divider(
+                            color: Color(0xFFE6E6E6),
+                            thickness: 1,
                           ),
-                          SizedBox(width: 8),
-                          Text(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Text(
                             'or',
-                            textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Color(0xFF828282),
+                              color: Colors.grey.shade600,
                               fontSize: 14,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400,
-                              height: 1.40,
                             ),
                           ),
-                          SizedBox(width: 8),
-                          Expanded(
-                            child: Container(
-                              height: 1,
-                              decoration: BoxDecoration(color: Color(0xFFE6E6E6)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 24),
-                    
-                    // Google sign-in button
-                    Container(
-                      width: 327,
-                      height: 40,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                      ),
-                      child: Stack(
-                        children: [
-                          Container(
-                            width: 327,
-                            height: 40,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFFEEEEEE),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    // Google logo
-                                    Image.asset(
-                                      '../../../assets/images/google_logo.png',
-                                      width: 20,
-                                      height: 20,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      'Continue with Google',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14,
-                                        fontFamily: 'Inter',
-                                        fontWeight: FontWeight.w500,
-                                        height: 1.40,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 24),
-                    
-                    // Terms and policy text
-                    SizedBox(
-                      width: 327,
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'By clicking continue, you agree to our ',
-                              style: TextStyle(
-                                color: Color(0xFF828282),
-                                fontSize: 12,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                height: 1.50,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'Terms of Service',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                height: 1.50,
-                              ),
-                            ),
-                            TextSpan(
-                              text: ' and ',
-                              style: TextStyle(
-                                color: Color(0xFF828282),
-                                fontSize: 12,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                height: 1.50,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'Privacy Policy',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                height: 1.50,
-                              ),
-                            ),
-                          ],
                         ),
-                        textAlign: TextAlign.center,
+                        const Expanded(
+                          child: Divider(
+                            color: Color(0xFFE6E6E6),
+                            thickness: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    
+                    const SizedBox(height: 24),
+                    
+                    // Google sign in button
+                    OutlinedButton.icon(
+                      onPressed: () {
+                        // Add Google sign-in logic
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Google sign-in selected'),
+                          ),
+                        );
+                      },
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: const Color(0xFFEEEEEE),
+                        minimumSize: const Size(double.infinity, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        side: BorderSide.none,
+                      ),
+                      icon: Image.asset(
+                        'assets/images/google_logo.png',
+                        width: 20,
+                        height: 20,
+                      ),
+                      label: const Text(
+                        'Continue with Google',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    
+                    const SizedBox(height: 24),
+                    
+                    // Terms of service
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontSize: 12,
+                          height: 1.5,
+                        ),
+                        children: [
+                          const TextSpan(
+                            text: 'By clicking continue, you agree to our ',
+                          ),
+                          TextSpan(
+                            text: 'Terms of Service',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                // Add terms of service navigation
+                              },
+                          ),
+                          const TextSpan(
+                            text: ' and ',
+                          ),
+                          TextSpan(
+                            text: 'Privacy Policy',
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                // Add privacy policy navigation
+                              },
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
+                
+                const SizedBox(height: 32),
+              ],
             ),
-            
-            // Status bar
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Container(
-                width: 375,
-                height: 44,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(color: Colors.white),
-              ),
-            ),
-            
-            // App title
-            Positioned(
-              left: 136,
-              top: 40,
-              child: Text(
-                'MediCircle',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF38A3A5),
-                  fontSize: 32,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w600,
-                  height: 1.50,
-                  letterSpacing: -0.32,
-                ),
-              ),
-            ),
-            
-            // App logo
-            Positioned(
-              left: 89,
-              top: 50,
-              child: SizedBox(
-                width: 34,
-                height: 32.21,
-                child: Image.asset(
-                  '../../../assets/images/medicircle_logo.png',
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -11,7 +11,7 @@ class AppRoutes {
       // case login:
       //   return MaterialPageRoute(builder: (_) => LoginPage());
       case signup:
-        return MaterialPageRoute(builder: (_) => SignUpScreen());
+        return MaterialPageRoute(builder: (_) => SignupScreen());
       // case dashboard:
       //   return MaterialPageRoute(builder: (_) => DashboardPage());
       default:
