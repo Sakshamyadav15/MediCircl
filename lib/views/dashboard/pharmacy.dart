@@ -63,7 +63,11 @@ class _PharmacyScreenState extends State<PharmacyPage> {
               shape: BoxShape.circle,
               color: Colors.transparent,
             ),
-            child: const Icon(Icons.location_on_outlined, size: 20, color: Color(0xFF666666)),
+            child: const Icon(
+              Icons.location_on_outlined,
+              size: 20,
+              color: Color(0xFF666666),
+            ),
           ),
           const SizedBox(width: 12),
           RichText(
@@ -159,12 +163,9 @@ class _PharmacyScreenState extends State<PharmacyPage> {
             color: const Color(0xFFD9D9D9),
             borderRadius: BorderRadius.circular(8),
             image: const DecorationImage(
-              image: NetworkImage("https://placehold.co/328x130/38A3A5/FFFFFF"),
+              image: NetworkImage("../../../assets/images/meds_pills.png"),
               fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                Colors.black38,
-                BlendMode.darken,
-              ),
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
             ),
           ),
           padding: const EdgeInsets.all(16),
@@ -201,7 +202,10 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: const Color(0xFF2B2B2B),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   minimumSize: const Size(124, 36),
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1, color: Color(0xFFE6E6E6)),
@@ -263,12 +267,9 @@ class _PharmacyScreenState extends State<PharmacyPage> {
         color: const Color(0xFFD9D9D9),
         borderRadius: BorderRadius.circular(8),
         image: const DecorationImage(
-          image: NetworkImage("https://placehold.co/328x130/2B2B2B/FFFFFF"),
+          image: AssetImage("../../../assets/images/pharmacy_shop.jpg"),
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            Colors.black38,
-            BlendMode.darken,
-          ),
+          colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
         ),
       ),
       padding: const EdgeInsets.all(16),
@@ -316,9 +317,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
       padding: const EdgeInsets.all(12),
       decoration: ShapeDecoration(
         color: const Color(0xFFFEF7E6),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         shadows: const [
           BoxShadow(
             color: Color(0x0F101828),
@@ -331,7 +330,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
             blurRadius: 8,
             offset: Offset(0, 4),
             spreadRadius: -2,
-          )
+          ),
         ],
       ),
       child: Row(
@@ -423,21 +422,18 @@ class _PharmacyScreenState extends State<PharmacyPage> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          child: imageUrl != null
-              ? ClipRRect(
-                  borderRadius: BorderRadius.circular(22),
-                  child: Image.network(
-                    imageUrl,
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
-                )
-              : Icon(
-                  icon,
-                  size: 48,
-                  color: const Color(0xFF2B2B2B),
-                ),
+          child:
+              imageUrl != null
+                  ? ClipRRect(
+                    borderRadius: BorderRadius.circular(22),
+                    child: Image.network(
+                      imageUrl,
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                  : Icon(icon, size: 48, color: const Color(0xFF2B2B2B)),
         ),
       ],
     );
