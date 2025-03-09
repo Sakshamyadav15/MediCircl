@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import '../../routes/routes.dart';
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
