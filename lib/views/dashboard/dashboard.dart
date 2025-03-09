@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'home_page.dart';
-// import 'blood_bank.dart';
+import 'blood_bank.dart';
 import 'pharmacy.dart';
 // import 'accounts.dart';
 
@@ -15,8 +15,8 @@ class _DashboardPageState extends State<DashboardPage> {
   final List<Widget> _pages = [
     // HomePage(),
     Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
-    // BloodBankPage(),
-    Center(child: Text('Blood Bank', style: TextStyle(fontSize: 24))),
+    BloodBankPage(),
+    // Center(child: Text('Blood Bank', style: TextStyle(fontSize: 24))),
     PharmacyPage(),
     // AccountPage(),
     Center(child: Text('Account', style: TextStyle(fontSize: 24))),
