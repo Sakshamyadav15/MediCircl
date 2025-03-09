@@ -33,11 +33,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/images/logo.png',
-                      width: 47,
-                      height: 48,
-                    ),
+                    Image.asset('assets/images/medicircle_logo.png'),
                     const SizedBox(width: 8),
                     const Text(
                       'MediCircle',
@@ -51,12 +47,11 @@ class _SignupScreenState extends State<SignupScreen> {
                   ],
                 ),
                 
-                // Main illustration
                 Container(
                   height: 300,
                   alignment: Alignment.center,
                   child: Image.asset(
-                    'assets/images/medical_illustration.png',
+                    'assets/images/doctor_illustration.png',
                     fit: BoxFit.contain,
                   ),
                 ),
