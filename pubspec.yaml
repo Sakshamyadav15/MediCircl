@@ -61,6 +61,7 @@ flutter:
     - assets/images/medicircle_logo.png
     - assets/images/google_logo.png
     - assets/images/doctor_illustration.png
+    - assets/images/blood_bank.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
