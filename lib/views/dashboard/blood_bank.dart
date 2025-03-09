@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BloodDonorPage extends StatelessWidget {
+class BloodBankPage extends StatelessWidget {
   // Blood drop icon definition
   static const IconData dropFill = IconData(
     0xf8d9,
@@ -8,7 +8,7 @@ class BloodDonorPage extends StatelessWidget {
     fontPackage: 'cupertino_icons',
   );
 
-  const BloodDonorPage({Key? key}) : super(key: key);
+  const BloodBankPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
