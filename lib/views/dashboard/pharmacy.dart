@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class PharmacyPage extends StatefulWidget {
   const PharmacyPage({super.key});
-
   @override
   State<PharmacyPage> createState() => _PharmacyScreenState();
 }
@@ -31,7 +30,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                   children: [
                     _buildSearchBar(),
                     const SizedBox(height: 24),
-                    _buildCarousel(),
+                    _buildCarousel(context),
                     const SizedBox(height: 24),
                     _buildPharmacyCard(),
                     const SizedBox(height: 24),
@@ -47,7 +46,6 @@ class _PharmacyScreenState extends State<PharmacyPage> {
           ),
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -154,11 +152,12 @@ class _PharmacyScreenState extends State<PharmacyPage> {
     );
   }
 
-  Widget _buildCarousel() {
+  Widget _buildCarousel(BuildContext context) {
     return Column(
       children: [
         Container(
-          height: 130,
+          width: double.infinity, // Makes the card take full width
+          height: MediaQuery.sizeOf(context).height * 0.2, // 20% of screen height
           decoration: BoxDecoration(
             color: const Color(0xFFD9D9D9),
             borderRadius: BorderRadius.circular(8),
@@ -168,7 +167,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
               colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
             ),
           ),
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(MediaQuery.sizeOf(context).width * 0.04), // Dynamic padding
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,7 +184,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.005), // Responsive spacing
                   const Text(
                     'Add up to 5 patients for free',
                     style: TextStyle(
@@ -202,11 +201,14 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: const Color(0xFF2B2B2B),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.sizeOf(context).width * 0.03,
+                    vertical: MediaQuery.sizeOf(context).height * 0.01,
                   ),
-                  minimumSize: const Size(124, 36),
+                  minimumSize: Size(
+                    MediaQuery.sizeOf(context).width * 0.35, // 35% of screen width
+                    MediaQuery.sizeOf(context).height * 0.05, // 5% of screen height
+                  ),
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1, color: Color(0xFFE6E6E6)),
                     borderRadius: BorderRadius.circular(6),
@@ -224,7 +226,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
             ],
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01), // Responsive spacing
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -457,49 +459,6 @@ class _PharmacyScreenState extends State<PharmacyPage> {
           color: Color(0xFF38A3A5),
         ),
       ),
-    );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return Container(
-      height: 96,
-      color: const Color(0x7C57CC99),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildNavItem(icon: Icons.home, label: 'Home', isSelected: true),
-          _buildNavItem(icon: Icons.bloodtype_outlined, label: 'Blood Bank'),
-          _buildNavItem(icon: Icons.local_pharmacy_outlined, label: 'Pharmacy'),
-          _buildNavItem(icon: Icons.person_outline, label: 'Account'),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavItem({
-    required IconData icon,
-    required String label,
-    bool isSelected = false,
-  }) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          color: isSelected ? const Color(0xFF38A3A5) : Colors.black,
-          size: 24,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: TextStyle(
-            color: isSelected ? const Color(0xFF38A3A5) : Colors.black,
-            fontSize: 12,
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
     );
   }
 }

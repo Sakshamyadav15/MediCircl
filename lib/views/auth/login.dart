@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.pharmacy);
+                Navigator.pushNamed(context, AppRoutes.dashboard);
               },
               child: Text("Go to Dashboard"),
             ),

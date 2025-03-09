@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medicircle/views/dashboard/pharmacy.dart';
 import '../views/auth/sign-up.dart';
 import '../views/auth/login.dart';
+import '../views/dashboard/dashboard.dart';
 
 class AppRoutes {
   static const String login = '/login';
@@ -15,8 +16,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => LoginPage());
       case signup:
         return MaterialPageRoute(builder: (_) => SignupScreen());
-      // case dashboard:
-      //   return MaterialPageRoute(builder: (_) => DashboardPage());
+      case dashboard:
+        return MaterialPageRoute(builder: (_) => DashboardPage());
       case pharmacy:
         return MaterialPageRoute(builder: (_) => PharmacyPage());
       default:
