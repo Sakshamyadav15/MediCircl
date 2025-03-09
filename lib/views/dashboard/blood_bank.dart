@@ -194,7 +194,7 @@ class BloodBankPage extends StatelessWidget {
         color: Colors.black.withOpacity(0.5),
         borderRadius: BorderRadius.circular(8),
         image: const DecorationImage(
-          image: AssetImage('assets/images/abc.png'),
+          image: AssetImage('assets/images/blood_bank.jpeg'),
           fit: BoxFit.cover,
           opacity: 0.4,
         ),
