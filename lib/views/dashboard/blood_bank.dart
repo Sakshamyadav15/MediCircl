@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BloodBankPage extends StatelessWidget {
-  // Blood drop icon definition
   static const IconData dropFill = IconData(
     0xf8d9,
     fontFamily: 'CupertinoIcons',
@@ -19,27 +18,13 @@ class BloodBankPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // Top address and search section
                 _buildTopSection(),
-
-                // Donation status
                 _buildDonationStatus(),
-
-                // Urgent requests banner
                 _buildUrgentRequestsBanner(),
-
-                // Find active donors card
                 _buildFindDonorsCard(),
-
-                // Find a blood type section
                 _buildBloodTypeSection(),
-
-                // Register as donor banner
                 _buildRegisterAsDonorBanner(),
-
                 const SizedBox(height: 20),
-
-                // Bottom navigation,
               ],
             ),
           ),
@@ -332,5 +317,3 @@ class BloodBankPage extends StatelessWidget {
     );
   }
 }
-
-// The BloodSymbolPainter class is no longer needed since we're using the dropFill icon
