@@ -21,26 +21,25 @@ class BloodBankPage extends StatelessWidget {
               children: [
                 // Top address and search section
                 _buildTopSection(),
-                
+
                 // Donation status
                 _buildDonationStatus(),
-                
+
                 // Urgent requests banner
                 _buildUrgentRequestsBanner(),
-                
+
                 // Find active donors card
                 _buildFindDonorsCard(),
-                
+
                 // Find a blood type section
                 _buildBloodTypeSection(),
-                
+
                 // Register as donor banner
                 _buildRegisterAsDonorBanner(),
-                
+
                 const SizedBox(height: 20),
-                
-                // Bottom navigation
-                _buildBottomNavigation(),
+
+                // Bottom navigation,
               ],
             ),
           ),
@@ -181,11 +180,7 @@ class BloodBankPage extends StatelessWidget {
               ),
             ],
           ),
-          Icon(
-            dropFill,
-            size: 50,
-            color: Colors.red.shade700,
-          ),
+          Icon(dropFill, size: 50, color: Colors.red.shade700),
         ],
       ),
     );
@@ -199,7 +194,7 @@ class BloodBankPage extends StatelessWidget {
         color: Colors.black.withOpacity(0.5),
         borderRadius: BorderRadius.circular(8),
         image: const DecorationImage(
-          image: NetworkImage('https://via.placeholder.com/328x130'),
+          image: AssetImage('assets/images/abc.png'),
           fit: BoxFit.cover,
           opacity: 0.4,
         ),
@@ -243,10 +238,7 @@ class BloodBankPage extends StatelessWidget {
   }
 
   Widget _buildBloodTypeSection() {
-    final bloodTypes = [
-      'A+', 'A-', 'B+', 'B-',
-      'O+', 'O-', 'AB+', 'AB-',
-    ];
+    final bloodTypes = ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'];
 
     return Column(
       children: [
@@ -277,34 +269,35 @@ class BloodBankPage extends StatelessWidget {
           ),
           itemCount: bloodTypes.length,
           itemBuilder: (context, index) {
-            return Stack(
-              children: [
-                // Background blood symbols
-                Positioned.fill(
-                  child: CustomPaint(
-                    painter: BloodSymbolPainter(
-                      color: Colors.red.withOpacity(0.15),
+            return Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFFDA8E8E),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Single Blood Drop icon background
+                  Opacity(
+                    opacity: 0.2,
+                    child: Icon(
+                      dropFill,
+                      size: 60,
+                      color: Colors.red.shade900,
                     ),
                   ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFDA8E8E),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Center(
-                    child: Text(
-                      bloodTypes[index],
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w600,
-                      ),
+                  // Blood Type text
+                  Text(
+                    bloodTypes[index],
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),
@@ -323,11 +316,7 @@ class BloodBankPage extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(
-            dropFill,
-            size: 30,
-            color: Colors.red.shade800,
-          ),
+          Icon(dropFill, size: 30, color: Colors.red.shade800),
           const SizedBox(width: 15),
           const Text(
             'Register Yourself as a Donor',
@@ -342,155 +331,6 @@ class BloodBankPage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildBottomNavigation() {
-    return Container(
-      height: 96,
-      color: const Color(0x7CCC6057),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavItem('Home'),
-          _buildNavItem('Blood Bank', isActive: true),
-          _buildNavItem('Pharmacy'),
-          _buildNavItem('Account'),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavItem(String label, {bool isActive = false}) {
-    IconData icon;
-    switch (label) {
-      case 'Home':
-        icon = Icons.home;
-        break;
-      case 'Blood Bank':
-        icon = dropFill;
-        break;
-      case 'Pharmacy':
-        icon = Icons.local_pharmacy;
-        break;
-      case 'Account':
-        icon = Icons.person;
-        break;
-      default:
-        icon = Icons.circle;
-    }
-
-    return Container(
-      decoration: isActive
-          ? BoxDecoration(
-              color: const Color(0x2DBF0F12),
-              borderRadius: BorderRadius.circular(4),
-            )
-          : null,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: isActive ? Colors.red.shade900 : Colors.black87),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 12,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
-// Custom painter for drawing blood drop symbols in the background
-class BloodSymbolPainter extends CustomPainter {
-  final Color color;
-
-  BloodSymbolPainter({required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-
-    final dropPath = Path();
-    
-    // Draw main drop in center
-    _drawBloodDrop(
-      canvas, 
-      paint, 
-      centerX: size.width / 2, 
-      centerY: size.height / 2,
-      size: size.width * 0.5
-    );
-    
-    // Draw smaller drops in corners
-    _drawBloodDrop(
-      canvas, 
-      paint, 
-      centerX: size.width * 0.25, 
-      centerY: size.height * 0.25,
-      size: size.width * 0.25
-    );
-    
-    _drawBloodDrop(
-      canvas, 
-      paint, 
-      centerX: size.width * 0.75, 
-      centerY: size.height * 0.25,
-      size: size.width * 0.25
-    );
-    
-    _drawBloodDrop(
-      canvas, 
-      paint, 
-      centerX: size.width * 0.25, 
-      centerY: size.height * 0.75,
-      size: size.width * 0.25
-    );
-    
-    _drawBloodDrop(
-      canvas, 
-      paint, 
-      centerX: size.width * 0.75, 
-      centerY: size.height * 0.75,
-      size: size.width * 0.25
-    );
-  }
-  
-  void _drawBloodDrop(Canvas canvas, Paint paint, {
-    required double centerX, 
-    required double centerY,
-    required double size
-  }) {
-    final path = Path();
-    
-    // Starting point at the top of the drop
-    path.moveTo(centerX, centerY - size * 0.5);
-    
-    // Draw the teardrop shape
-    path.cubicTo(
-      centerX + size * 0.4, centerY - size * 0.3,  // control point 1
-      centerX + size * 0.4, centerY + size * 0.3,  // control point 2
-      centerX, centerY + size * 0.4                // end point
-    );
-    
-    path.cubicTo(
-      centerX - size * 0.4, centerY + size * 0.3,  // control point 1
-      centerX - size * 0.4, centerY - size * 0.3,  // control point 2
-      centerX, centerY - size * 0.5                // end point (back to start)
-    );
-    
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
-}
+// The BloodSymbolPainter class is no longer needed since we're using the dropFill icon
