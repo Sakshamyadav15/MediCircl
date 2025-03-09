@@ -379,67 +379,45 @@ class _PharmacyScreenState extends State<PharmacyPage> {
     );
   }
 
-  Widget _buildQuickAccessSection() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _buildQuickAccessItem(
-          title: 'Find Discounts',
-          icon: Icons.discount_outlined,
-          backgroundColor: const Color(0x7FDADADA),
-        ),
-        _buildQuickAccessItem(
-          title: 'Set Medi Reminders',
-          icon: Icons.access_time,
-          imageUrl: "https://placehold.co/80x80",
-        ),
-      ],
-    );
-  }
+Widget _buildQuickAccessSection() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      _buildQuickAccessItem(
+        title: 'Find Discounts',
+        image: AssetImage('assets/images/discount_image.jpg'),
+        backgroundColor: const Color(0x7FDADADA),
+      ),
+      _buildQuickAccessItem(
+        title: 'Set Medi Reminders',
+        image: AssetImage('assets/images/bell_image.webpr'),
+      ),
+    ],
+  );
+}
 
-  Widget _buildQuickAccessItem({
-    required String title,
-    required IconData icon,
-    Color backgroundColor = Colors.transparent,
-    String? imageUrl,
-  }) {
-    return Column(
+Widget _buildQuickAccessItem({
+  required String title,
+  IconData? icon,
+  AssetImage? image,
+  Color backgroundColor = Colors.transparent,
+}) {
+  return Container(
+    // Your container styling
+    child: Column(
       children: [
-        Text(
-          title,
-          style: const TextStyle(
-            color: Color(0xFF2B2B2B),
-            fontSize: 14,
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          width: 131,
-          height: 109,
-          decoration: ShapeDecoration(
-            color: backgroundColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          child:
-              imageUrl != null
-                  ? ClipRRect(
-                    borderRadius: BorderRadius.circular(22),
-                    child: Image.network(
-                      imageUrl,
-                      width: 80,
-                      height: 80,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                  : Icon(icon, size: 48, color: const Color(0xFF2B2B2B)),
-        ),
+        image != null
+          ? Image(
+              image: image,
+              width: 24, // Adjust size as needed
+              height: 24, // Adjust size as needed
+            )
+          : Icon(icon),
+        Text(title),
       ],
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildFloatingButton() {
     return Align(
