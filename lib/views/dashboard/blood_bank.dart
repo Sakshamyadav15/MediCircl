@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BloodDonorPage extends StatelessWidget {
+class BloodBankPage extends StatelessWidget {
   // Blood drop icon definition
   static const IconData dropFill = IconData(
     0xf8d9,
@@ -8,7 +8,7 @@ class BloodDonorPage extends StatelessWidget {
     fontPackage: 'cupertino_icons',
   );
 
-  const BloodDonorPage({Key? key}) : super(key: key);
+  const BloodBankPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,31 +16,33 @@ class BloodDonorPage extends StatelessWidget {
       body: Container(
         color: const Color(0xFFFFE4E4),
         child: SafeArea(
-          child: Column(
-            children: [
-              // Top address and search section
-              _buildTopSection(),
-              
-              // Donation status
-              _buildDonationStatus(),
-              
-              // Urgent requests banner
-              _buildUrgentRequestsBanner(),
-              
-              // Find active donors card
-              _buildFindDonorsCard(),
-              
-              // Find a blood type section
-              _buildBloodTypeSection(),
-              
-              // Register as donor banner
-              _buildRegisterAsDonorBanner(),
-              
-              const Spacer(),
-              
-              // Bottom navigation
-              _buildBottomNavigation(),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // Top address and search section
+                _buildTopSection(),
+                
+                // Donation status
+                _buildDonationStatus(),
+                
+                // Urgent requests banner
+                _buildUrgentRequestsBanner(),
+                
+                // Find active donors card
+                _buildFindDonorsCard(),
+                
+                // Find a blood type section
+                _buildBloodTypeSection(),
+                
+                // Register as donor banner
+                _buildRegisterAsDonorBanner(),
+                
+                const SizedBox(height: 20),
+                
+                // Bottom navigation
+                _buildBottomNavigation(),
+              ],
+            ),
           ),
         ),
       ),
@@ -275,22 +277,34 @@ class BloodDonorPage extends StatelessWidget {
           ),
           itemCount: bloodTypes.length,
           itemBuilder: (context, index) {
-            return Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFFDA8E8E),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Center(
-                child: Text(
-                  bloodTypes[index],
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w600,
+            return Stack(
+              children: [
+                // Background blood symbols
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: BloodSymbolPainter(
+                      color: Colors.red.withOpacity(0.15),
+                    ),
                   ),
                 ),
-              ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFDA8E8E),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Center(
+                    child: Text(
+                      bloodTypes[index],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             );
           },
         ),
@@ -389,5 +403,94 @@ class BloodDonorPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+// Custom painter for drawing blood drop symbols in the background
+class BloodSymbolPainter extends CustomPainter {
+  final Color color;
+
+  BloodSymbolPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    final dropPath = Path();
+    
+    // Draw main drop in center
+    _drawBloodDrop(
+      canvas, 
+      paint, 
+      centerX: size.width / 2, 
+      centerY: size.height / 2,
+      size: size.width * 0.5
+    );
+    
+    // Draw smaller drops in corners
+    _drawBloodDrop(
+      canvas, 
+      paint, 
+      centerX: size.width * 0.25, 
+      centerY: size.height * 0.25,
+      size: size.width * 0.25
+    );
+    
+    _drawBloodDrop(
+      canvas, 
+      paint, 
+      centerX: size.width * 0.75, 
+      centerY: size.height * 0.25,
+      size: size.width * 0.25
+    );
+    
+    _drawBloodDrop(
+      canvas, 
+      paint, 
+      centerX: size.width * 0.25, 
+      centerY: size.height * 0.75,
+      size: size.width * 0.25
+    );
+    
+    _drawBloodDrop(
+      canvas, 
+      paint, 
+      centerX: size.width * 0.75, 
+      centerY: size.height * 0.75,
+      size: size.width * 0.25
+    );
+  }
+  
+  void _drawBloodDrop(Canvas canvas, Paint paint, {
+    required double centerX, 
+    required double centerY,
+    required double size
+  }) {
+    final path = Path();
+    
+    // Starting point at the top of the drop
+    path.moveTo(centerX, centerY - size * 0.5);
+    
+    // Draw the teardrop shape
+    path.cubicTo(
+      centerX + size * 0.4, centerY - size * 0.3,  // control point 1
+      centerX + size * 0.4, centerY + size * 0.3,  // control point 2
+      centerX, centerY + size * 0.4                // end point
+    );
+    
+    path.cubicTo(
+      centerX - size * 0.4, centerY + size * 0.3,  // control point 1
+      centerX - size * 0.4, centerY - size * 0.3,  // control point 2
+      centerX, centerY - size * 0.5                // end point (back to start)
+    );
+    
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
