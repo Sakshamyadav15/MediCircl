@@ -7,7 +7,7 @@ class BloodBankPage extends StatelessWidget {
     fontPackage: 'cupertino_icons',
   );
 
-  const BloodBankPage({Key? key}) : super(key: key);
+  const BloodBankPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -390,7 +390,7 @@ Widget _buildQuickAccessSection() {
       ),
       _buildQuickAccessItem(
         title: 'Set Medi Reminders',
-        image: AssetImage('assets/images/bell_image.webpr'),
+        image: AssetImage('assets/images/bell_image.webp'),
       ),
     ],
   );

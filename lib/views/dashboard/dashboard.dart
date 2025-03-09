@@ -5,6 +5,8 @@ import 'pharmacy.dart';
 // import 'accounts.dart';
 
 class DashboardPage extends StatefulWidget {
+  const DashboardPage({super.key});
+
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
