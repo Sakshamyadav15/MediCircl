@@ -264,10 +264,10 @@ class BloodBankPage extends StatelessWidget {
                 children: [
                   // Single Blood Drop icon background
                   Opacity(
-                    opacity: 0.2,
+                    opacity: 0.7,
                     child: Icon(
                       dropFill,
-                      size: 60,
+                      size: 70,
                       color: Colors.red.shade900,
                     ),
                   ),
