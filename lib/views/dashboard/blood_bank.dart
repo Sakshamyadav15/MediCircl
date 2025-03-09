@@ -175,6 +175,7 @@ class BloodBankPage extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 31, vertical: 10),
       height: 130,
+      
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.5),
         borderRadius: BorderRadius.circular(8),
