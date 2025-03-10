@@ -103,29 +103,68 @@ class BloodBankPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       alignment: Alignment.centerLeft,
-      child: RichText(
-        text: const TextSpan(
-          children: [
-            TextSpan(
-              text: 'Donate Blood :',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w700,
-              ),
+      child: Row(
+        children: [
+          RichText(
+            text: const TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Donate Blood :',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                TextSpan(
+                  text: ' Off',
+                  style: TextStyle(
+                    color: Color(0xFFE41E1E),
+                    fontSize: 14,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
             ),
-            TextSpan(
-              text: ' Off',
-              style: TextStyle(
-                color: Color(0xFFE41E1E),
-                fontSize: 14,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w700,
-              ),
+          ),
+          Container(width: 8),
+          Container(
+            width: 32,
+            height: 20,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Container(
+                    width: 32,
+                    height: 20,
+                    decoration: ShapeDecoration(
+                      color: Color(0xFFC62D2D),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(17.50),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 15.27,
+                  top: 2.31,
+                  child: Container(
+                    width: 14.55,
+                    height: 15.38,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: OvalBorder(),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -265,11 +304,7 @@ class BloodBankPage extends StatelessWidget {
                   // Single Blood Drop icon background
                   Opacity(
                     opacity: 0.7,
-                    child: Icon(
-                      dropFill,
-                      size: 70,
-                      color: Colors.red.shade900,
-                    ),
+                    child: Icon(dropFill, size: 70, color: Colors.red.shade900),
                   ),
                   // Blood Type text
                   Text(
