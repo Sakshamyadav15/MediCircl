@@ -130,7 +130,7 @@ class BloodBankPage extends StatelessWidget {
             ),
           ),
           Container(width: 8),
-          Container(
+          SizedBox(
             width: 32,
             height: 20,
             child: Stack(
