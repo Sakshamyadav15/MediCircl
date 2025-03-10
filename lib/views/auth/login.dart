@@ -288,7 +288,7 @@ class LoginPage extends StatelessWidget {
                             SizedBox(
                               width: 20,
                               height: 20,
-                              child: Image.asset('assets/google_logo.png'),
+                              child: Image.asset('assets/images/google_logo.png'),
                             ),
                             const SizedBox(width: 8),
                             const Text(
