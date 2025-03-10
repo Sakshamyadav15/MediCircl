@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-
+import '../dashboard/dashboard.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     // Get screen dimensions
     final screenSize = MediaQuery.of(context).size;
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
-    
+
     // Use fractional values for better responsive layout
     final double logoTopPadding = screenHeight * 0.08;
     final double contentTopPadding = screenHeight * 0.18;
-    
+
     return Scaffold(
       body: Container(
         width: screenWidth,
@@ -39,7 +39,9 @@ class LoginPage extends StatelessWidget {
                         SizedBox(
                           width: 47,
                           height: 48,
-                          child: Image.asset('assets/images/medicircle_logo.png'),
+                          child: Image.asset(
+                            'assets/images/medicircle_logo.png',
+                          ),
                         ),
                         const SizedBox(width: 10),
                         const Text(
@@ -56,23 +58,29 @@ class LoginPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    
+
                     SizedBox(height: screenHeight * 0.04),
-                    
+
                     // Doctor Image
                     SizedBox(
                       width: 130,
                       height: 120,
-                      child: Image.asset('assets/images/doctor_with_glasses.png'),
+                      child: Image.asset(
+                        'assets/images/doctor_with_glasses.png',
+                      ),
                     ),
-                    
+
                     SizedBox(height: screenHeight * 0.02),
-                    
+
                     // Slogan Text - Now in a more compact layout
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('assets/images/star.png', width: 24, height: 24),
+                        Image.asset(
+                          'assets/images/star.png',
+                          width: 24,
+                          height: 24,
+                        ),
                         const SizedBox(width: 8),
                         const Text(
                           'Connecting Care,',
@@ -95,18 +103,24 @@ class LoginPage extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    
+
                     SizedBox(height: screenHeight * 0.04),
-                    
+
                     // Email Input
                     Container(
                       width: double.infinity,
                       height: 40,
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 1, color: Color(0xFFDFDFDF)),
+                          side: const BorderSide(
+                            width: 1,
+                            color: Color(0xFFDFDFDF),
+                          ),
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
@@ -130,18 +144,24 @@ class LoginPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    
+
                     const SizedBox(height: 12),
-                    
+
                     // Password Input
                     Container(
                       width: double.infinity,
                       height: 40,
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 1, color: Color(0xFFDFDFDF)),
+                          side: const BorderSide(
+                            width: 1,
+                            color: Color(0xFFDFDFDF),
+                          ),
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
@@ -167,18 +187,27 @@ class LoginPage extends StatelessWidget {
                             height: 20,
                             clipBehavior: Clip.antiAlias,
                             decoration: const BoxDecoration(),
-                            child: const Icon(Icons.visibility_off, size: 16, color: Color(0xFF828282)),
+                            child: const Icon(
+                              Icons.visibility_off,
+                              size: 16,
+                              color: Color(0xFF828282),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    
+
                     const SizedBox(height: 12),
-                    
+
                     // Continue Button
                     GestureDetector(
                       onTap: () {
-                        // Add navigation logic here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const DashboardPage(),
+                          ),
+                        );
                       },
                       child: Container(
                         width: double.infinity,
@@ -186,7 +215,9 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         decoration: ShapeDecoration(
                           color: const Color(0xFF57CC99),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
                         child: const Center(
                           child: Text(
@@ -202,9 +233,9 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    
+
                     const SizedBox(height: 12),
-                    
+
                     // Create Account
                     const Text(
                       'Create an account',
@@ -217,9 +248,9 @@ class LoginPage extends StatelessWidget {
                         height: 1.50,
                       ),
                     ),
-                    
+
                     const SizedBox(height: 4),
-                    
+
                     // Email signup hint
                     const Text(
                       'Enter your email to sign up for this app',
@@ -232,17 +263,14 @@ class LoginPage extends StatelessWidget {
                         height: 1.50,
                       ),
                     ),
-                    
+
                     const SizedBox(height: 12),
-                    
+
                     // Divider with "or" text
                     Row(
                       children: const [
                         Expanded(
-                          child: Divider(
-                            height: 1,
-                            color: Color(0xFFE6E6E6),
-                          ),
+                          child: Divider(height: 1, color: Color(0xFFE6E6E6)),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -259,16 +287,13 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Divider(
-                            height: 1,
-                            color: Color(0xFFE6E6E6),
-                          ),
+                          child: Divider(height: 1, color: Color(0xFFE6E6E6)),
                         ),
                       ],
                     ),
-                    
+
                     const SizedBox(height: 12),
-                    
+
                     // Sign in with Google button
                     GestureDetector(
                       onTap: () {
@@ -279,7 +304,9 @@ class LoginPage extends StatelessWidget {
                         height: 40,
                         decoration: ShapeDecoration(
                           color: const Color(0xFFEEEEEE),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -287,7 +314,9 @@ class LoginPage extends StatelessWidget {
                             SizedBox(
                               width: 20,
                               height: 20,
-                              child: Image.asset('assets/images/google_logo.png'),
+                              child: Image.asset(
+                                'assets/images/google_logo.png',
+                              ),
                             ),
                             const SizedBox(width: 8),
                             const Text(
@@ -304,9 +333,9 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    
+
                     const SizedBox(height: 12),
-                    
+
                     // Terms and Privacy text
                     const Text.rich(
                       TextSpan(
