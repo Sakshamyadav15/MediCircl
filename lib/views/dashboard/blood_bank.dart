@@ -21,7 +21,7 @@ class BloodBankPage extends StatelessWidget {
                 _buildTopSection(),
                 _buildDonationStatus(),
                 _buildUrgentRequestsBanner(),
-                _buildFindDonorsCard(),
+                _buildFindDonorsCard(context),
                 _buildBloodTypeSection(),
                 _buildRegisterAsDonorBanner(),
                 const SizedBox(height: 20),
@@ -171,11 +171,11 @@ class BloodBankPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFindDonorsCard() {
+  Widget _buildFindDonorsCard(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 31, vertical: 10),
       height: 130,
-      
+      width: MediaQuery.of(context).size.width, // Make it full width
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.5),
         borderRadius: BorderRadius.circular(8),
@@ -266,11 +266,7 @@ class BloodBankPage extends StatelessWidget {
                   // Single Blood Drop icon background
                   Opacity(
                     opacity: 0.7,
-                    child: Icon(
-                      dropFill,
-                      size: 70,
-                      color: Colors.red.shade900,
-                    ),
+                    child: Icon(dropFill, size: 70, color: Colors.red.shade900),
                   ),
                   // Blood Type text
                   Text(

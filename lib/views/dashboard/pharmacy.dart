@@ -32,7 +32,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                     const SizedBox(height: 24),
                     _buildCarousel(context),
                     const SizedBox(height: 24),
-                    _buildPharmacyCard(),
+                    _buildPharmacyCard(context),
                     const SizedBox(height: 24),
                     _buildPrescriptionCard(),
                     const SizedBox(height: 24),
@@ -157,7 +157,8 @@ class _PharmacyScreenState extends State<PharmacyPage> {
       children: [
         Container(
           width: double.infinity, // Makes the card take full width
-          height: MediaQuery.sizeOf(context).height * 0.2, // 20% of screen height
+          height:
+              MediaQuery.sizeOf(context).height * 0.2, // 20% of screen height
           decoration: BoxDecoration(
             color: const Color(0xFFD9D9D9),
             borderRadius: BorderRadius.circular(8),
@@ -167,7 +168,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
               colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
             ),
           ),
-          padding: EdgeInsets.all(MediaQuery.sizeOf(context).width * 0.04), // Dynamic padding
+          padding: EdgeInsets.all(MediaQuery.sizeOf(context).width * 0.04),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -184,7 +185,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.005), // Responsive spacing
+                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.005),
                   const Text(
                     'Add up to 5 patients for free',
                     style: TextStyle(
@@ -206,8 +207,10 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                     vertical: MediaQuery.sizeOf(context).height * 0.01,
                   ),
                   minimumSize: Size(
-                    MediaQuery.sizeOf(context).width * 0.35, // 35% of screen width
-                    MediaQuery.sizeOf(context).height * 0.05, // 5% of screen height
+                    MediaQuery.sizeOf(context).width *
+                        0.35, // 35% of screen width
+                    MediaQuery.sizeOf(context).height *
+                        0.05, // 5% of screen height
                   ),
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1, color: Color(0xFFE6E6E6)),
@@ -226,7 +229,9 @@ class _PharmacyScreenState extends State<PharmacyPage> {
             ],
           ),
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01), // Responsive spacing
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.01,
+        ), // Responsive spacing
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -262,9 +267,10 @@ class _PharmacyScreenState extends State<PharmacyPage> {
     );
   }
 
-  Widget _buildPharmacyCard() {
+  Widget _buildPharmacyCard(BuildContext context) {
     return Container(
-      height: 130,
+      width: double.infinity, // Takes full width
+      height: MediaQuery.sizeOf(context).height * 0.2, // 20% of screen height
       decoration: BoxDecoration(
         color: const Color(0xFFD9D9D9),
         borderRadius: BorderRadius.circular(8),
@@ -274,7 +280,9 @@ class _PharmacyScreenState extends State<PharmacyPage> {
           colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
         ),
       ),
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(
+        MediaQuery.sizeOf(context).width * 0.04,
+      ), // Responsive padding
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -293,8 +301,14 @@ class _PharmacyScreenState extends State<PharmacyPage> {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
               foregroundColor: const Color(0xFF2B2B2B),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              minimumSize: const Size(124, 36),
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.sizeOf(context).width * 0.03,
+                vertical: MediaQuery.sizeOf(context).height * 0.01,
+              ),
+              minimumSize: Size(
+                MediaQuery.sizeOf(context).width * 0.35, // 35% of screen width
+                MediaQuery.sizeOf(context).height * 0.05, // 5% of screen height
+              ),
               shape: RoundedRectangleBorder(
                 side: const BorderSide(width: 1, color: Color(0xFFE6E6E6)),
                 borderRadius: BorderRadius.circular(6),
@@ -379,45 +393,45 @@ class _PharmacyScreenState extends State<PharmacyPage> {
     );
   }
 
-Widget _buildQuickAccessSection() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      _buildQuickAccessItem(
-        title: 'Find Discounts',
-        image: AssetImage('assets/images/discount_image.jpg'),
-        backgroundColor: const Color(0x7FDADADA),
-      ),
-      _buildQuickAccessItem(
-        title: 'Set Medi Reminders',
-        image: AssetImage('assets/images/bell_image.webp'),
-      ),
-    ],
-  );
-}
-
-Widget _buildQuickAccessItem({
-  required String title,
-  IconData? icon,
-  AssetImage? image,
-  Color backgroundColor = Colors.transparent,
-}) {
-  return Container(
-    // Your container styling
-    child: Column(
+  Widget _buildQuickAccessSection() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        image != null
-          ? Image(
-              image: image,
-              width: 24, // Adjust size as needed
-              height: 24, // Adjust size as needed
-            )
-          : Icon(icon),
-        Text(title),
+        _buildQuickAccessItem(
+          title: 'Find Discounts',
+          image: AssetImage('assets/images/discount_image.jpg'),
+          backgroundColor: const Color(0x7FDADADA),
+        ),
+        _buildQuickAccessItem(
+          title: 'Set Medi Reminders',
+          image: AssetImage('assets/images/bell_image.webp'),
+        ),
       ],
-    ),
-  );
-}
+    );
+  }
+
+  Widget _buildQuickAccessItem({
+    required String title,
+    IconData? icon,
+    AssetImage? image,
+    Color backgroundColor = Colors.transparent,
+  }) {
+    return Container(
+      // Your container styling
+      child: Column(
+        children: [
+          image != null
+              ? Image(
+                image: image,
+                width: 24, // Adjust size as needed
+                height: 24, // Adjust size as needed
+              )
+              : Icon(icon),
+          Text(title),
+        ],
+      ),
+    );
+  }
 
   Widget _buildFloatingButton() {
     return Align(
