@@ -13,7 +13,7 @@ class BloodBankPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color(0xFFFFE4E4),
+        color: const Color(0x66DA7B7B),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
