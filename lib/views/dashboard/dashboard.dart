@@ -16,11 +16,11 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<Widget> _pages = [
     // HomePage(),
+     Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
     BloodBankPage(),
-    BloodBankPage(),
-    PharmacyPage(),
     PharmacyPage(),
     // AccountPage(),
+    Center(child: Text('Account', style: TextStyle(fontSize: 24))),
   ];
 
   void _onItemTapped(int index) {
