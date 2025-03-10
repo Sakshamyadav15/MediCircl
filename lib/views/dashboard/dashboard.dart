@@ -16,18 +16,22 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<Widget> _pages = [
     // HomePage(),
-    Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
     BloodBankPage(),
-    // Center(child: Text('Blood Bank', style: TextStyle(fontSize: 24))),
+    BloodBankPage(),
+    PharmacyPage(),
     PharmacyPage(),
     // AccountPage(),
-    Center(child: Text('Account', style: TextStyle(fontSize: 24))),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  /// Function to dynamically set the navbar color
+  Color _getNavBarColor() {
+    return _selectedIndex == 1 ? Colors.red : const Color(0xFF38A3A5); // Blood Bank → Red, Else → Green
   }
 
   @override
@@ -41,21 +45,13 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget _buildBottomNavigationBar() {
     return Container(
       height: 96,
-      color: const Color(0x7C57CC99),
+      color: _getNavBarColor(), // Dynamic navbar color
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildNavItem(icon: Icons.home, label: 'Home', index: 0),
-          _buildNavItem(
-            icon: Icons.bloodtype_outlined,
-            label: 'Blood Bank',
-            index: 1,
-          ),
-          _buildNavItem(
-            icon: Icons.local_pharmacy_outlined,
-            label: 'Pharmacy',
-            index: 2,
-          ),
+          _buildNavItem(icon: Icons.bloodtype_outlined, label: 'Blood Bank', index: 1),
+          _buildNavItem(icon: Icons.local_pharmacy_outlined, label: 'Pharmacy', index: 2),
           _buildNavItem(icon: Icons.person_outline, label: 'Account', index: 3),
         ],
       ),
@@ -75,14 +71,14 @@ class _DashboardPageState extends State<DashboardPage> {
         children: [
           Icon(
             icon,
-            color: isSelected ? const Color(0xFF38A3A5) : Colors.black,
+            color: isSelected ? Colors.white : Colors.black, // Selected icons turn white for better contrast
             size: 24,
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(
-              color: isSelected ? const Color(0xFF38A3A5) : Colors.black,
+              color: isSelected ? Colors.white : Colors.black, // Selected text turns white for visibility
               fontSize: 12,
               fontFamily: 'Inter',
               fontWeight: FontWeight.w600,
