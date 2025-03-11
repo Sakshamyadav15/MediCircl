@@ -13,6 +13,7 @@ class LoginPage extends StatelessWidget {
 
     // Use fractional values for better responsive layout
     final double logoTopPadding = screenHeight * 0.08;
+    
     final double contentTopPadding = screenHeight * 0.18;
 
     return Scaffold(
