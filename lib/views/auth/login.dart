@@ -63,8 +63,8 @@ class LoginPage extends StatelessWidget {
 
                     // Doctor Image
                     SizedBox(
-                      width: 130,
-                      height: 120,
+                      width: 300,
+                      height: 250,
                       child: Image.asset(
                         'assets/images/doctor_with_glasses.png',
                       ),
