@@ -433,22 +433,27 @@ class _PharmacyScreenState extends State<PharmacyPage> {
     );
   }
 
-  Widget _buildFloatingButton() {
+  Widget _buildFloatingButton(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
-      child: Container(
-        width: 71,
-        height: 68,
-        decoration: ShapeDecoration(
-          color: const Color(0x2657CC99),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, AppRoutes.chat);
+        },
+        child: Container(
+          width: 71,
+          height: 68,
+          decoration: ShapeDecoration(
+            color: const Color(0x2657CC99),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
           ),
-        ),
-        child: const Icon(
-          Icons.chat_outlined,
-          size: 40,
-          color: Color(0xFF38A3A5),
+          child: const Icon(
+            Icons.chat_outlined,
+            size: 40,
+            color: Color(0xFF38A3A5),
+          ),
         ),
       ),
     );

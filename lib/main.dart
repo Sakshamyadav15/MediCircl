@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import './routes/routes.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  runApp(const MediCircleApp());
+void main() async {
+  await dotenv.load();
+  runApp(MediCircleApp());
 }
 
 class MediCircleApp extends StatelessWidget {
