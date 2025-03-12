@@ -13,7 +13,7 @@
 migrate_working_dir/
 backend/node_modules
 backend/serviceAccountKey.json
-assets/google-vertex-api.json
+assets/serviceAccount.json
 
 # IntelliJ related
 *.iml
