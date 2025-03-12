@@ -3,9 +3,9 @@ import './routes/routes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  runApp(MediCircleApp());
+  print("Loaded environment variables: ${dotenv.env}");
   await dotenv.load(fileName: "key.env");
-  
+  runApp(MediCircleApp());   
 }
 
 class MediCircleApp extends StatelessWidget {

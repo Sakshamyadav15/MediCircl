@@ -6,25 +6,31 @@ class VertexAIService {
   static final String apiKey = dotenv.env['VERTEX_AI_API_KEY'] ?? '';
 
   static Future<String> getChatResponse(String prompt) async {
+    print("Loaded API Key: $apiKey");
+    if (apiKey.isEmpty) {
+      return "Error: API key is missing!";
+    }
+
     final url = Uri.parse(
-        'https://us-central1-aiplatform.googleapis.com/v1/projects/YOUR_PROJECT_ID/locations/us-central1/publishers/google/models/gemini-pro:predict');
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apiKey');
 
     final response = await http.post(
       url,
-      headers: {
-        'Authorization': 'Bearer $apiKey',
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
-        "instances": [
-          {"prompt": prompt}
+        "contents": [
+          {
+            "parts": [
+              {"text": prompt}
+            ]
+          }
         ]
       }),
     );
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      return data["predictions"]?[0]["content"] ?? "No response";
+      return data["candidates"]?[0]["content"] ?? "No response";
     } else {
       return "Error: ${response.body}";
     }

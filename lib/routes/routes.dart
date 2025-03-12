@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medicircle/views/dashboard/pharmacy.dart';
+import '../views/dashboard/pharmacy.dart';
 import '../views/auth/sign-up.dart';
 import '../views/auth/login.dart';
 import '../views/dashboard/dashboard.dart';
