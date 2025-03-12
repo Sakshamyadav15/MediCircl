@@ -433,12 +433,12 @@ class _PharmacyScreenState extends State<PharmacyPage> {
     );
   }
 
-  Widget _buildFloatingButton(BuildContext context) {
+  Widget _buildFloatingButton() {
     return Align(
       alignment: Alignment.centerRight,
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, AppRoutes.chat);
+          Navigator.pushNamed(context, '/chat');
         },
         child: Container(
           width: 71,

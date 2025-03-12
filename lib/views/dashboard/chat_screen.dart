@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'vertex_ai_service.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});

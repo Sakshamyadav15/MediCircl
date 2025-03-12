@@ -3,7 +3,7 @@ import 'package:medicircle/views/dashboard/pharmacy.dart';
 import '../views/auth/sign-up.dart';
 import '../views/auth/login.dart';
 import '../views/dashboard/dashboard.dart';
-import '../views/dashboard/chat_screen.dart'; 
+import '../views/dashboard/chat_screen.dart'; // Import ChatScreen
 
 class AppRoutes {
   static const String login = '/login';

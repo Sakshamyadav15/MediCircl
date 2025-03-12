@@ -3,8 +3,9 @@ import './routes/routes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  await dotenv.load();
   runApp(MediCircleApp());
+  await dotenv.load(fileName: "key.env");
+  
 }
 
 class MediCircleApp extends StatelessWidget {
