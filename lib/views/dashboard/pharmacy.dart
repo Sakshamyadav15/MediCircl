@@ -37,8 +37,6 @@ class _PharmacyScreenState extends State<PharmacyPage> {
                     _buildPrescriptionCard(),
                     const SizedBox(height: 24),
                     _buildQuickAccessSection(),
-                    const SizedBox(height: 24),
-                    _buildFloatingButton(),
                   ],
                 ),
               ),
@@ -429,32 +427,6 @@ class _PharmacyScreenState extends State<PharmacyPage> {
               : Icon(icon),
           Text(title),
         ],
-      ),
-    );
-  }
-
-  Widget _buildFloatingButton() {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, '/chat');
-        },
-        child: Container(
-          width: 71,
-          height: 68,
-          decoration: ShapeDecoration(
-            color: const Color(0x2657CC99),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-          child: const Icon(
-            Icons.chat_outlined,
-            size: 40,
-            color: Color(0xFF38A3A5),
-          ),
-        ),
       ),
     );
   }
