@@ -4,6 +4,7 @@ import 'blood_bank.dart';
 import 'pharmacy.dart';
 // import 'accounts.dart';
 
+
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -15,11 +16,9 @@ class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    // HomePage(),
-     Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
+    Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
     BloodBankPage(),
     PharmacyPage(),
-    // AccountPage(),
     Center(child: Text('Account', style: TextStyle(fontSize: 24))),
   ];
 
@@ -29,63 +28,50 @@ class _DashboardPageState extends State<DashboardPage> {
     });
   }
 
-  /// Function to dynamically set the navbar color
   Color _getNavBarColor() {
-    return _selectedIndex == 1 ? Colors.red : const Color(0xFF38A3A5); // Blood Bank → Red, Else → Green
+    return _selectedIndex == 1 ? Colors.red : const Color(0xFF38A3A5);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: Stack(
+        children: [
+          _pages[_selectedIndex], 
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: _buildFloatingButton(), 
+          ),
+        ],
+      ),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return Container(
-      height: 96,
-      color: _getNavBarColor(), // Dynamic navbar color
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildNavItem(icon: Icons.home, label: 'Home', index: 0),
-          _buildNavItem(icon: Icons.bloodtype_outlined, label: 'Blood Bank', index: 1),
-          _buildNavItem(icon: Icons.local_pharmacy_outlined, label: 'Pharmacy', index: 2),
-          _buildNavItem(icon: Icons.person_outline, label: 'Account', index: 3),
-        ],
-      ),
+  Widget _buildFloatingButton() {
+    return FloatingActionButton(
+      onPressed: () => Navigator.pushNamed(context, '/chat'),
+      backgroundColor: const Color.fromARGB(37, 45, 90, 70),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: const Icon(Icons.chat_outlined, size: 40, color: Color(0xFF38A3A5)),
     );
   }
 
-  Widget _buildNavItem({
-    required IconData icon,
-    required String label,
-    required int index,
-  }) {
-    bool isSelected = _selectedIndex == index;
-    return GestureDetector(
-      onTap: () => _onItemTapped(index),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            color: isSelected ? Colors.white : Colors.black, // Selected icons turn white for better contrast
-            size: 24,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              color: isSelected ? Colors.white : Colors.black, // Selected text turns white for visibility
-              fontSize: 12,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      currentIndex: _selectedIndex,
+      onTap: _onItemTapped,
+      backgroundColor: _getNavBarColor(),
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.black,
+      type: BottomNavigationBarType.fixed,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.bloodtype_outlined), label: 'Blood Bank'),
+        BottomNavigationBarItem(icon: Icon(Icons.local_pharmacy_outlined), label: 'Pharmacy'),
+        BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),
+      ],
     );
   }
 }
