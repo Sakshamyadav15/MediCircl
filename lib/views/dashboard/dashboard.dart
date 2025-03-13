@@ -4,7 +4,6 @@ import 'blood_bank.dart';
 import 'pharmacy.dart';
 // import 'accounts.dart';
 
-
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -37,12 +36,8 @@ class _DashboardPageState extends State<DashboardPage> {
     return Scaffold(
       body: Stack(
         children: [
-          _pages[_selectedIndex], 
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: _buildFloatingButton(), 
-          ),
+          _pages[_selectedIndex],
+          Positioned(bottom: 20, right: 20, child: _buildFloatingButton()),
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
@@ -50,11 +45,33 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Widget _buildFloatingButton() {
-    return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, '/chat'),
-      backgroundColor: const Color.fromARGB(37, 45, 90, 70),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: const Icon(Icons.chat_outlined, size: 40, color: Color(0xFF38A3A5)),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF38A3A5), Color(0xFF57CC99)], // Smooth gradient
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 8,
+            offset: const Offset(0, 4), // Soft shadow below
+          ),
+        ],
+      ),
+      child: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, '/chat'),
+        backgroundColor: Colors.transparent, // Makes gradient visible
+        elevation: 0, // Handled by BoxDecoration
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: const Icon(
+          Icons.chat_outlined,
+          size: 36,
+          color: Colors.white, // Better contrast
+        ),
+      ),
     );
   }
 
@@ -68,9 +85,18 @@ class _DashboardPageState extends State<DashboardPage> {
       type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.bloodtype_outlined), label: 'Blood Bank'),
-        BottomNavigationBarItem(icon: Icon(Icons.local_pharmacy_outlined), label: 'Pharmacy'),
-        BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.bloodtype_outlined),
+          label: 'Blood Bank',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.local_pharmacy_outlined),
+          label: 'Pharmacy',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline),
+          label: 'Account',
+        ),
       ],
     );
   }
