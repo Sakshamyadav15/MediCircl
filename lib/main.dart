@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import './routes/routes.dart';
+import 'routes/routes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  print("Loaded environment variables: ${dotenv.env}");
-  await dotenv.load(fileName: "key.env");
-  runApp(MediCircleApp());   
+   
+  await dotenv.load(fileName: "assets/.env"); 
+  String apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
+
+  print("API Key: $apiKey");
+
+  runApp(MediCircleApp()); 
+   
 }
 
 class MediCircleApp extends StatelessWidget {

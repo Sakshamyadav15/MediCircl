@@ -73,6 +73,7 @@ flutter:
     - 'assets/images/doctor_with_glasses.png'
     - 'assets/images/star.png'
     - assets/serviceAccount.json
+    - assets/.env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -30,7 +30,7 @@ class VertexAIService {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      return data["candidates"]?[0]["content"] ?? "No response";
+      return data["candidates"]?[0]["content"]["parts"][0]["text"] ?? "No response";
     } else {
       return "Error: ${response.body}";
     }

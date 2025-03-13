@@ -23,7 +23,7 @@ class AppRoutes {
       case pharmacy:
         return MaterialPageRoute(builder: (_) => PharmacyPage());
       case chat:
-        return MaterialPageRoute(builder: (_) => const ChatScreen()); // Chat Screen
+        return MaterialPageRoute(builder: (_) => ChatScreen()); // Chat Screen
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
