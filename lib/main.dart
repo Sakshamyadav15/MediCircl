@@ -5,10 +5,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 void main() async {
    
   await dotenv.load(fileName: "assets/.env"); 
-  String apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
-
-  print("API Key: $apiKey");
-
   runApp(MediCircleApp()); 
    
 }

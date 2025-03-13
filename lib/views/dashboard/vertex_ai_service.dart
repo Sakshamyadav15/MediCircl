@@ -12,7 +12,7 @@ class VertexAIService {
     }
 
     final url = Uri.parse(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apiKey');
+        'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateText?key=$apiKey');
 
     final response = await http.post(
       url,
@@ -20,6 +20,7 @@ class VertexAIService {
       body: jsonEncode({
         "contents": [
           {
+            "role": "user",
             "parts": [
               {"text": prompt}
             ]
@@ -30,9 +31,9 @@ class VertexAIService {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      return data["candidates"]?[0]["content"]["parts"][0]["text"] ?? "No response";
+      return data["candidates"]?[0]["content"]?["parts"]?[0]?["text"] ?? "No response";
     } else {
-      return "Error: ${response.body}";
+      return "Error: ${response.statusCode} - ${response.body}";
     }
   }
 }
