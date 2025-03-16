@@ -37,8 +37,15 @@ class AccountsPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Add passport photo
                   Positioned(
-                    left: 235,
+                    left: 33,
+                    top: 108,
+                    child: _buildPassportPhoto(),
+                  ),
+                  // Adjust position of user info to appear next to the photo
+                  Positioned(
+                    left: 170, // Adjusted from 235 to account for photo
                     top: 108,
                     child: _buildUserInfoSection(),
                   ),
@@ -106,6 +113,31 @@ class AccountsPage extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPassportPhoto() {
+    return Container(
+      width: 160,
+      height: 200,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 5,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Image.asset(
+          '../../../assets/images/passport_photo.png',
+          fit: BoxFit.cover,
         ),
       ),
     );

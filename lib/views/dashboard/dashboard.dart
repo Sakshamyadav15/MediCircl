@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'accounts.dart';
 import 'blood_bank.dart';
 import 'pharmacy.dart';
 
@@ -17,8 +18,7 @@ class _DashboardPageState extends State<DashboardPage> {
     Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
     BloodBankPage(),
     PharmacyPage(),
-    // AccountPage(),
-    Center(child: Text('Account', style: TextStyle(fontSize: 24))),
+    AccountsPage(),
   ];
 
   void _onItemTapped(int index) {
