@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AccountsPage extends StatelessWidget {
-  const AccountsPage({Key? key}) : super(key: key);
+  const AccountsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +43,9 @@ class AccountsPage extends StatelessWidget {
                     top: 108,
                     child: _buildPassportPhoto(),
                   ),
-                  // Adjust position of user info to appear next to the photo
+                  // Increased spacing between photo and details
                   Positioned(
-                    left: 170, // Adjusted from 235 to account for photo
+                    left: 215, // Increased from 170 to add more space
                     top: 108,
                     child: _buildUserInfoSection(),
                   ),
@@ -87,7 +87,7 @@ class AccountsPage extends StatelessWidget {
                   Positioned(
                     left: 33,
                     top: 408,
-                    child: _buildInfoField('xxx@gmail.com'),
+                    child: _buildInfoField('xxx@gmail.com', Icons.email),
                   ),
                   Positioned(
                     left: 33,
@@ -102,12 +102,12 @@ class AccountsPage extends StatelessWidget {
                   Positioned(
                     left: 33,
                     top: 635,
-                    child: _buildSettingsButton(' App Settings & Preferences'),
+                    child: _buildSettingsButton(' App Settings & Preferences', Icons.settings),
                   ),
                   Positioned(
                     left: 33,
                     top: 701,
-                    child: _buildSettingsButton('MedAI Data & Preferences'),
+                    child: _buildSettingsButton('MedAI Data & Preferences', Icons.data_usage),
                   ),
                 ],
               ),
@@ -144,7 +144,7 @@ class AccountsPage extends StatelessWidget {
   }
 
   Widget _buildUserInfoSection() {
-    return Container(
+    return SizedBox(
       height: 215,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -198,7 +198,7 @@ class AccountsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoField(String text) {
+  Widget _buildInfoField(String text, IconData icon) {
     return Container(
       width: 327,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
@@ -213,7 +213,7 @@ class AccountsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 24, height: 24),
+          Icon(icon, color: Color(0xFFABABAB), size: 24),
           const SizedBox(width: 12),
           Text(
             text,
@@ -250,7 +250,7 @@ class AccountsPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          _buildInfoField('+912123135'),
+          _buildInfoField('+912123135', Icons.phone),
         ],
       ),
     );
@@ -269,11 +269,13 @@ class AccountsPage extends StatelessWidget {
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Icon(Icons.bloodtype, color: Color(0xFFC13C3C), size: 24),
+          const SizedBox(width: 12),
           SizedBox(
-            width: 258,
+            width: 220,
             child: Text(
               'Blood Donation History',
               style: TextStyle(
@@ -286,6 +288,7 @@ class AccountsPage extends StatelessWidget {
               ),
             ),
           ),
+          Spacer(),
           Container(
             width: 33,
             height: 33,
@@ -296,13 +299,14 @@ class AccountsPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
+            child: Icon(Icons.arrow_forward_ios, color: Color(0xFFC13C3C), size: 18),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSettingsButton(String text) {
+  Widget _buildSettingsButton(String text, IconData icon) {
     return Container(
       width: 327,
       height: 54,
@@ -318,7 +322,7 @@ class AccountsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 30, height: 30),
+          Icon(icon, color: Color(0xFFABABAB), size: 24),
           const SizedBox(width: 12),
           SizedBox(
             width: 222,
@@ -334,6 +338,8 @@ class AccountsPage extends StatelessWidget {
               ),
             ),
           ),
+          Spacer(),
+          Icon(Icons.arrow_forward_ios, color: Color(0xFFABABAB), size: 18),
         ],
       ),
     );
