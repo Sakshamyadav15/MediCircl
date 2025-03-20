@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AccountsPage extends StatelessWidget {
-  const AccountsPage({Key? key}) : super(key: key);
+  const AccountsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +144,7 @@ class AccountsPage extends StatelessWidget {
   }
 
   Widget _buildUserInfoSection() {
-    return Container(
+    return SizedBox(
       height: 215,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -213,7 +213,7 @@ class AccountsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 24, height: 24),
+          SizedBox(width: 24, height: 24),
           const SizedBox(width: 12),
           Text(
             text,
@@ -318,7 +318,7 @@ class AccountsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 30, height: 30),
+          SizedBox(width: 30, height: 30),
           const SizedBox(width: 12),
           SizedBox(
             width: 222,
