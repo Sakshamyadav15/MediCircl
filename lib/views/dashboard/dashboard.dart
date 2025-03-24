@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'accounts.dart';
 import 'blood_bank.dart';
 import 'pharmacy.dart';
+import 'home_page.dart';
+// AIzaSyASGwTv_52vy4MpWNFN-hKJV73xErPgqFI
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -14,8 +16,7 @@ class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    // HomePage(),
-    Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
+    HomePage(),
     BloodBankPage(),
     PharmacyPage(),
     AccountsPage(),
@@ -48,7 +49,7 @@ class _DashboardPageState extends State<DashboardPage> {
     return Container(
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFF38A3A5), Color(0xFF57CC99)], 
+          colors: [Color(0xFF38A3A5), Color(0xFF57CC99)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -57,20 +58,16 @@ class _DashboardPageState extends State<DashboardPage> {
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
             blurRadius: 8,
-            offset: const Offset(0, 4), 
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, '/chat'),
-        backgroundColor: Colors.transparent, 
-        elevation: 0, 
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: const Icon(
-          Icons.chat_outlined,
-          size: 36,
-          color: Colors.white,
-        ),
+        child: const Icon(Icons.chat_outlined, size: 36, color: Colors.white),
       ),
     );
   }

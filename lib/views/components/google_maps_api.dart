@@ -1,41 +1,44 @@
+// File: lib/components/google_maps_api.dart
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class GoogleMapPopup extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MapSample(),
-    );
+  _GoogleMapPopupState createState() => _GoogleMapPopupState();
+}
+
+class _GoogleMapPopupState extends State<GoogleMapPopup> {
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(12.9716, 77.5946); // Bengaluru coordinates
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
   }
-}
-
-class MapSample extends StatefulWidget {
-  @override
-  State<MapSample> createState() => MapSampleState();
-}
-
-class MapSampleState extends State<MapSample> {
-  // Initial camera position
-  static const CameraPosition _initialPosition = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962), // Example coordinates
-    zoom: 14.4746,
-  );
-
-  late GoogleMapController _controller;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Google Maps in Flutter')),
+      appBar: AppBar(
+        title: Text('Location Details'),
+        backgroundColor: Color(0xFF38A3A5),
+      ),
       body: GoogleMap(
-        initialCameraPosition: _initialPosition,
-        onMapCreated: (GoogleMapController controller) {
-          _controller = controller;
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: _center,
+          zoom: 12.0,
+        ),
+        markers: {
+          Marker(
+            markerId: MarkerId('Bengaluru'),
+            position: _center,
+            infoWindow: InfoWindow(
+              title: 'Bengaluru',
+              snippet: 'Karnataka, India',
+            ),
+          ),
         },
-        // You can also add markers, polylines, etc. here.
       ),
     );
   }
