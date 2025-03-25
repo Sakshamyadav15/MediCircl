@@ -3,7 +3,6 @@ import 'accounts.dart';
 import 'blood_bank.dart';
 import 'pharmacy.dart';
 import 'home_page.dart';
-// AIzaSyASGwTv_52vy4MpWNFN-hKJV73xErPgqFI
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});

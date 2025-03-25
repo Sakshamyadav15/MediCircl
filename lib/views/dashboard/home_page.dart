@@ -1,4 +1,3 @@
-// File: lib/pages/home_page.dart
 import 'package:flutter/material.dart';
 import '../components/google_maps_api.dart';
 
@@ -19,43 +18,68 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         toolbarHeight: 80,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Welcome to Medicircl',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF38A3A5),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  prefixIcon: Icon(Icons.search),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
               ),
             ),
-            SizedBox(height: 20),
-            _buildNavButton(
-              context,
-              'Blood Bank',
-              Icons.bloodtype,
-              '/bloodbank',
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  "https://placehold.co/293x134",
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-            _buildNavButton(
-              context,
-              'Pharmacy',
-              Icons.local_pharmacy,
-              '/pharmacy',
+            Divider(color: Color(0xFF38A3A5), thickness: 3),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildFeatureCard('Medicinal Reminder', "https://placehold.co/170x130"),
+                      _buildFeatureCard('Medical Reports', "https://placehold.co/170x130"),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  _buildImageCard('Blood Donation Camp', "https://placehold.co/350x113"),
+                  SizedBox(height: 16),
+                  _buildEmergencyButton(),
+                  SizedBox(height: 16),
+                  _buildQuickAccessButtons(context),
+                ],
+              ),
             ),
-            _buildNavButton(
-              context,
-              'Accounts',
-              Icons.account_circle,
-              '/accounts',
-            ),
-            SizedBox(height: 20),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+        ],
+        selectedItemColor: Color(0xFF38A3A5),
       ),
     );
   }
@@ -63,7 +87,6 @@ class HomePage extends StatelessWidget {
   Widget _buildAddressBar(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigate to the Google Maps page when the location is tapped
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -82,6 +105,16 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildQuickAccessButtons(BuildContext context) {
+    return Column(
+      children: [
+        _buildNavButton(context, 'Blood Bank', Icons.bloodtype, '/bloodbank'),
+        _buildNavButton(context, 'Pharmacy', Icons.local_pharmacy, '/pharmacy'),
+        _buildNavButton(context, 'Accounts', Icons.account_circle, '/accounts'),
+      ],
     );
   }
 
@@ -107,6 +140,57 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, route);
         },
+      ),
+    );
+  }
+
+  Widget _buildFeatureCard(String title, String imageUrl) {
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Image.network(imageUrl, width: 150, height: 120, fit: BoxFit.cover),
+        ),
+        SizedBox(height: 8),
+        Text(
+          title,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildImageCard(String title, String imageUrl) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Image.network(imageUrl, width: double.infinity, fit: BoxFit.cover),
+        ),
+        SizedBox(height: 8),
+        Text(
+          title,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildEmergencyButton() {
+    return Container(
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.red,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Center(
+        child: Text(
+          'Emergency Blood Request',
+          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
