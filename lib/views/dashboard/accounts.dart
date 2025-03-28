@@ -136,7 +136,7 @@ class AccountsPage extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Image.asset(
-          '../../../assets/images/passport_photo.png',
+          'assets/images/passport_photo.png',
           fit: BoxFit.cover,
         ),
       ),

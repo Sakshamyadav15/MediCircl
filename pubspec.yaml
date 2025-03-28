@@ -67,15 +67,20 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/medicircle_logo.png
+    - assets/images/pharmacy_shop.jpg
     - assets/images/google_logo.png
     - assets/images/doctor_illustration.png
     - assets/images/blood_bank.jpeg
     - assets/images/discount_image.jpg
     - assets/images/bell_image.webp
     - 'assets/images/doctor_with_glasses.png'
+    - assets/images/meds_pills.png
     - 'assets/images/star.png'
     - assets/serviceAccount.json
     - assets/images/passport_photo.png
+    - assets/images/blood_donation_camp.jpg
+    - assets/images/medical_reports.jpg
+    - assets/images/medicinal_reminder.jpg
     - assets/.env
 
   # An image asset can refer to one or more resolution-specific "variants", see

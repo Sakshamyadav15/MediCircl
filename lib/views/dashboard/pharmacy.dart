@@ -161,7 +161,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
             color: const Color(0xFFD9D9D9),
             borderRadius: BorderRadius.circular(8),
             image: const DecorationImage(
-              image: NetworkImage("../../../assets/images/meds_pills.png"),
+              image: NetworkImage("assets/images/meds_pills.png"),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
             ),
@@ -273,7 +273,7 @@ class _PharmacyScreenState extends State<PharmacyPage> {
         color: const Color(0xFFD9D9D9),
         borderRadius: BorderRadius.circular(8),
         image: const DecorationImage(
-          image: AssetImage("../../../assets/images/pharmacy_shop.jpg"),
+          image: AssetImage("assets/images/pharmacy_shop.jpg"),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
         ),

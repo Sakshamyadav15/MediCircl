@@ -43,8 +43,8 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  "https://placehold.co/293x134",
+                child: Image.asset(
+                  "assets/images/medicircle_logo.png",
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -59,12 +59,12 @@ class HomePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildFeatureCard('Medicinal Reminder', "https://placehold.co/170x130"),
-                      _buildFeatureCard('Medical Reports', "https://placehold.co/170x130"),
+                      _buildFeatureCard('Medicinal Reminder', "assets/images/medicinal_reminder.jpg"),
+                      _buildFeatureCard('Medical Reports', "assets/images/medical_reports.jpg"),
                     ],
                   ),
                   SizedBox(height: 16),
-                  _buildImageCard('Blood Donation Camp', "https://placehold.co/350x113"),
+                  _buildImageCard('Blood Donation Camp', "assets/images/blood_donation_camp.jpg"),
                   SizedBox(height: 16),
                   _buildEmergencyButton(),
                   SizedBox(height: 16),
@@ -151,7 +151,7 @@ class HomePage extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
-          child: Image.network(imageUrl, width: 150, height: 120, fit: BoxFit.cover),
+          child: Image.asset(imageUrl, width: 150, height: 120, fit: BoxFit.cover),
         ),
         SizedBox(height: 8),
         Text(
@@ -169,7 +169,7 @@ class HomePage extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
-          child: Image.network(imageUrl, width: double.infinity, fit: BoxFit.cover),
+          child: Image.asset(imageUrl, width: double.infinity, fit: BoxFit.cover),
         ),
         SizedBox(height: 8),
         Text(
