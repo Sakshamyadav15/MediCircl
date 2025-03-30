@@ -6,6 +6,19 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('key.jks')
+            storePassword 'your-password'
+            keyAlias 'key'
+            keyPassword 'your-password'
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
     namespace = "com.example.medicircle"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion

@@ -213,7 +213,7 @@ class AccountsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 24, height: 24),
+          SizedBox(width: 24, height: 24),
           const SizedBox(width: 12),
           Text(
             text,
@@ -322,7 +322,7 @@ class AccountsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(width: 30, height: 30),
+          SizedBox(width: 30, height: 30),
           const SizedBox(width: 12),
           SizedBox(
             width: 222,
