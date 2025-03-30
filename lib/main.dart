@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'routes/routes.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'firebase_options.dart';
+
 
 void main() async {
-   
-  await dotenv.load(fileName: "assets/.env"); 
-  runApp(MediCircleApp()); 
-   
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "assets/.env");
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const MediCircleApp());
 }
+
 
 class MediCircleApp extends StatelessWidget {
   const MediCircleApp({super.key});

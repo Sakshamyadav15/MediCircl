@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1037679837787",
+    "project_id": "medicircl",
+    "storage_bucket": "medicircl.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037679837787:android:7b61a8f07259313728357e",
+        "android_client_info": {
+          "package_name": "com.example.medicircle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037679837787-sorkrs69v7epp3c8brm5q6eafpc83jbt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmnAJT5GyIu74Un3CBood7VsZjmbkHJz0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037679837787-sorkrs69v7epp3c8brm5q6eafpc83jbt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
