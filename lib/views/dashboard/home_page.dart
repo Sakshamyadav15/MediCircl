@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => GoogleMapPopup(),
+            builder: (context) => GoogleMapPopup(),  // Opens Google Maps Screen
           ),
         );
       },
