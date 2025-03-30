@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -36,10 +33,7 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -59,4 +53,25 @@ class DefaultFirebaseOptions {
     projectId: 'medicircl',
     storageBucket: 'medicircl.firebasestorage.app',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDTOs3CffmHtTrFgqPOg4zUd1yOmr9yCf4',
+    appId: '1:1037679837787:web:423e2ecba4defed728357e',
+    messagingSenderId: '1037679837787',
+    projectId: 'medicircl',
+    authDomain: 'medicircl.firebaseapp.com',
+    storageBucket: 'medicircl.firebasestorage.app',
+    measurementId: 'G-HTJRX59LFV',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDTOs3CffmHtTrFgqPOg4zUd1yOmr9yCf4',
+    appId: '1:1037679837787:web:e6705e6a856b798e28357e',
+    messagingSenderId: '1037679837787',
+    projectId: 'medicircl',
+    authDomain: 'medicircl.firebaseapp.com',
+    storageBucket: 'medicircl.firebasestorage.app',
+    measurementId: 'G-JNG6ZED44V',
+  );
+
 }
