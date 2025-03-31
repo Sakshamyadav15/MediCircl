@@ -8,18 +8,14 @@ plugins {
 
 android {
     signingConfigs {
-        release {
-            storeFile file('key.jks')
-            storePassword 'your-password'
-            keyAlias 'key'
-            keyPassword 'your-password'
+        create("release") {
+            storeFile = file("key.jks")
+            storePassword = "your-password"
+            keyAlias = "key"
+            keyPassword = "your-password"
         }
     }
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
-    }
+    
     namespace = "com.example.medicircle"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
@@ -34,15 +30,8 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.medicircle"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        android {
-    defaultConfig {
         minSdk = 23
-    }
-}
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -50,8 +39,10 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Uncomment this line to use your release signing configuration
+            // signingConfig = signingConfigs.getByName("release")
+            
+            // For now, using debug signing config so that `flutter run --release` works
             signingConfig = signingConfigs.getByName("debug")
         }
     }
@@ -61,6 +52,9 @@ flutter {
     source = "../.."
 }
 
-dependencies{
+dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+    // Add other Firebase dependencies you need here
+    // For example:
+    // implementation("com.google.firebase:firebase-auth")
 }
